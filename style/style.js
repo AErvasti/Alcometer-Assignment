@@ -20,6 +20,9 @@ export default StyleSheet.create({
     borderBottomColor: '#edecea',
     fontSize: 16
   },
+  row: {
+    padding: 10,
+  },
   //radiobutton
   buttonContainer: {
     flexDirection: 'row',
@@ -62,10 +65,6 @@ export default StyleSheet.create({
     fontSize: 42,
     textAlign: 'center',
     margin: 10,
-  },
-  //
-  row: {
-    padding: 10,
   },
   // calculate button
   button: {
