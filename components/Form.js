@@ -85,7 +85,7 @@ export default function Form() {
 
   return (
     <View style={styles.form}>
-      {/* Weight */}
+  {/* Weight */}
       <View style={styles.row}>
         <Text style={styles.label}>Weight</Text>
         <TextInput 
@@ -93,7 +93,7 @@ export default function Form() {
           value={weight}
           onChangeText={text => setWeight(text)} keyboardType='decimal-pad'/>
       </View>
-      {/* Bottles */}
+  {/* Bottles */}
       <View style={styles.row}>
         <Text style={styles.label}>Bottles</Text>
         <View style={styles.picker}>
@@ -106,7 +106,7 @@ export default function Form() {
           </Picker>
         </View>
       </View>
-      {/* Time */}
+  {/* Time */}
       <View style={styles.row}>
         <Text style={styles.label}>Time</Text>
         <View style={styles.picker}>
@@ -119,16 +119,16 @@ export default function Form() {
           </Picker>
         </View>
       </View>
-      {/* Gender */}
+  {/* Gender */}
       <View style={styles.row}>
         <Text style={styles.label}>Gender</Text>
         <Radiobutton options={genderValues} onPress={(value) => {setGender(value)}}/>
       </View>
-      {/* Blood alcohol level result*/}
+  {/* Blood alcohol level result*/}
       <View style={styles.result}>
         <Text style={{color:chooseColor(),fontSize:50}}>{alcoholLevel.toFixed(2)}</Text>
       </View>
-      {/* Calculate button */}
+  {/* Calculate button */}
       <View style={styles.row}>
         <Pressable 
 				style={styles.button}
