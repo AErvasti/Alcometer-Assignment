@@ -76,7 +76,7 @@ export default function Form() {
       return 'green'
     }
     if (alcoholLevel < 0.495) {
-      return 'yellow'
+      return 'orange'
     }
     if (alcoholLevel >= 0.495) {
       return 'red'
