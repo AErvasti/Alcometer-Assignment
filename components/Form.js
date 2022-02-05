@@ -9,8 +9,7 @@ export default function Form() {
   const [bottles, setBottles] = useState(1);
   const [time, setTime] = useState(1);
   const [gender, setGender] = useState('male');
-  const [message, setMessage] = useState('');
-  
+
   const [alcoholLevel, setAlcoholLevel] = useState(0);
   
   const genderValues = [
