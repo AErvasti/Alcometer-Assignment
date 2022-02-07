@@ -41,22 +41,31 @@ export default function Form() {
   }
 
   function calculate() {
+    let dotWeight = weight.replace(',','.');
     let grams = bottles*0.33*8*4.5;
-    let gramsLeft = grams - (weight/10) * time;
+    let gramsLeft = grams - (dotWeight/10) * time;
     let result = 0;
-    if (weight==='') {
-      Alert.alert(
-        'Note',
-        'Please enter your weight (kg)'
+
+    if (dotWeight==='' || isNaN(dotWeight)) {
+      alert(
+        `Please enter your weight (kg) correctly.\nFor example: 60.5`
       ) 
     } else {
       if (gender==='male') {
-        result = gramsLeft/(weight * 0.7);
+        result = gramsLeft/(dotWeight * 0.7);
       } else {
-        result = gramsLeft/(weight * 0.6);
+        result = gramsLeft/(dotWeight * 0.6);
       }
+
       if(result < 0) {
         result = 0;
+      }
+
+      if(result===Infinity) {
+        alert(
+          `Please enter your weight (kg) correctly.\nFor example: 60.5`
+        )
+        return
       }
       setAlcoholLevel(result);
     }
@@ -67,7 +76,7 @@ export default function Form() {
       return 'green'
     }
     if (alcoholLevel < 0.495) {
-      return 'orange'
+      return 'yellow'
     }
     if (alcoholLevel >= 0.495) {
       return 'red'
@@ -78,11 +87,11 @@ export default function Form() {
     <View style={styles.form}>
   {/* Weight */}
       <View style={styles.row}>
-        <Text style={styles.label}>Weight</Text>
+        <Text style={styles.label}>Weight (kg)</Text>
         <TextInput 
           style={styles.inputContainer}
           value={weight}
-          onChangeText={text => setWeight(text.replace(',', '.'))}
+          onChangeText={text => setWeight(text)}
           maxLength={5}
           keyboardType='decimal-pad'/>
       </View>
