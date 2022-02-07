@@ -60,7 +60,7 @@ export default function Form() {
       if(result < 0) {
         result = 0;
       }
-
+// decimal-pad has a space button, at least on android, which gives Infinity as result. isNaN doesn't pick this up.
       if(result===Infinity) {
         alert(
           `Please enter your weight (kg) correctly.\nFor example: 60.5`
