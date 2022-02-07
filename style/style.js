@@ -62,7 +62,7 @@ export default StyleSheet.create({
     color: 'skyblue',
     fontWeight: 'bold',
     flex: 1,
-    fontSize: 42,
+    fontSize: 50,
     textAlign: 'center',
     margin: 10,
   },
