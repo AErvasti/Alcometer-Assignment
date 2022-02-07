@@ -73,7 +73,7 @@ export default StyleSheet.create({
     padding: 10,
     backgroundColor: "blue",
     width:'100%',
-    borderRadius: 15,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -23,26 +23,21 @@ export default function Form() {
     }
   ]
 
-  const pickerBottles = [];
-  for (let i = 1;i < 25;i++) {
-    pickerBottles.push(
-      <Picker.Item 
-        key={'row' + i}
-        label={i.toString() + ' bottles'}
-        value={i.toString()}
-      />
-    )
-  }
-
-  const pickerTime = [];
-  for (let i = 1;i < 25;i++) {
-    pickerTime.push(
-      <Picker.Item
-        key={'row' + i}
-        label={i.toString() + ' hours'}
-        value={i.toString()}
-      />
-    )
+  const pickerBottles = ' bottles';
+  const pickerTime = ' hours';
+  
+  function PickerItemsList(unit) {
+    const pickerItems = [];
+    for (let i = 1;i < 25; i++) {
+      pickerItems.push(
+        <Picker.Item
+          key={'row' + i}
+          label={i.toString() + unit}
+          value={i.toString()}
+        />
+      )
+    }
+    return pickerItems;
   }
 
   function calculate() {
@@ -57,18 +52,14 @@ export default function Form() {
     } else {
       if (gender==='male') {
         result = gramsLeft/(weight * 0.7);
-      } else if (gender==='female'){
-        result = gramsLeft/(weight * 0.6);
       } else {
-        setMessage('Choose a gender');
+        result = gramsLeft/(weight * 0.6);
       }
-  
       if(result < 0) {
         result = 0;
       }
       setAlcoholLevel(result);
     }
-    
   }
 
   function chooseColor() {
@@ -91,7 +82,9 @@ export default function Form() {
         <TextInput 
           style={styles.inputContainer}
           value={weight}
-          onChangeText={text => setWeight(text)} keyboardType='decimal-pad'/>
+          onChangeText={text => setWeight(text.replace(',', '.'))}
+          maxLength={5}
+          keyboardType='decimal-pad'/>
       </View>
   {/* Bottles */}
       <View style={styles.row}>
@@ -102,7 +95,7 @@ export default function Form() {
             selectedValue={bottles}
             onValueChange={(itemValue) =>
               setBottles(itemValue)}>
-            {pickerBottles}
+            {PickerItemsList(pickerBottles)}
           </Picker>
         </View>
       </View>
@@ -115,7 +108,7 @@ export default function Form() {
             selectedValue={time}
             onValueChange={(itemValue) =>
               setTime(itemValue)}>
-            {pickerTime}
+            {PickerItemsList(pickerTime)}
           </Picker>
         </View>
       </View>
@@ -126,7 +119,9 @@ export default function Form() {
       </View>
   {/* Blood alcohol level result*/}
       <View style={styles.result}>
-        <Text style={{color:chooseColor(),fontSize:50}}>{alcoholLevel.toFixed(2)}</Text>
+        <Text style={{color:chooseColor(),fontSize:50}}>
+          {alcoholLevel.toFixed(2)}
+        </Text>
       </View>
   {/* Calculate button */}
       <View style={styles.row}>
