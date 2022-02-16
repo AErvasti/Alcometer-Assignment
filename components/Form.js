@@ -31,7 +31,7 @@ export default function Form() {
     for (let i = 1;i < 25; i++) {
       pickerItems.push(
         <Picker.Item
-          key={'row' + i}
+          key={i}
           label={i.toString() + unit}
           value={i.toString()}
         />
@@ -47,7 +47,8 @@ export default function Form() {
     let result = 0;
 
     if (dotWeight==='' || isNaN(dotWeight)) {
-      alert(
+      Alert.alert(
+        'Note',
         `Please enter your weight (kg) correctly.\nFor example: 60.5`
       ) 
     } else {
@@ -62,7 +63,8 @@ export default function Form() {
       }
 // decimal-pad has a space button, at least on android, which gives Infinity as result. isNaN doesn't pick this up.
       if(result===Infinity) {
-        alert(
+        Alert.alert(
+          'Note',
           `Please enter your weight (kg) correctly.\nFor example: 60.5`
         )
         return
